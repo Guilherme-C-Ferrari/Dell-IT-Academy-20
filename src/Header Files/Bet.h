@@ -1,8 +1,6 @@
 #pragma once
-# include <iostream>
-# include <vector>
 # include "Bettor.h"
-using namespace std;
+# include <vector>
 
 class Bet {
 
@@ -12,7 +10,7 @@ private:
 	int numbers[5];
 	Bettor bettor;
 
-public:
+public: 
 
-
+	Bet();
 };
