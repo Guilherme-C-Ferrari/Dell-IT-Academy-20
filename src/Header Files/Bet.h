@@ -1,16 +1,27 @@
 #pragma once
 # include "Bettor.h"
 # include <vector>
+# include <cstdlib>
 
 class Bet {
 
 private:
 
-	string unitary_code;
+	int code;
 	int numbers[5];
 	Bettor bettor;
 
 public: 
 
 	Bet();
+
+	int GetCode();
+	void SetCode(int c);
+
+	int* GetNumbers();
+	void SetNumbers(int c[5]);
+	void SetNumbersRandomly();
+
+	Bettor GetBettor();
+	void SetBettor(string name, string cpf);
 };
