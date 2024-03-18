@@ -170,7 +170,24 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
             editions[indexEdition].ShowBets();
             break;
         case 3:
-            cout << "\nO programa seguirá para a fase de sorteio?\n";
+            do {
+                cout << "\nVocê tem certeza que deseja passar para a fase de sorteio?\n";
+                cout << "1 - Sim\n";
+                cout << "2 - Não\n\n> ";
+                cin >> testString;
+                testInt = TestException(testString);
+
+                if (testInt == 1) {
+                    cout << "\nO programa passará para a fase de sorteio.\n";
+                }
+                else if (testInt == 2) {
+                    cout << "\nO programa voltará a fase de apostas.\n";
+                    option = 0;
+                }
+                else {
+                    cout << "\nEscolha uma opção válida.\n";
+                }
+            } while (testInt != 1 && testInt != 2);
             break;
         default:
             cout << "\nEscolha uma opção válida.\n";
