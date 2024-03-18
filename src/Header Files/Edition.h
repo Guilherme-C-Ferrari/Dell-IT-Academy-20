@@ -6,9 +6,9 @@ class Edition {
 private:
 
 	int edition_number;
-	vector<Bet> bets = vector<Bet>(0);
-	vector<int> winner_numbers = vector<int>(5);
-	vector<Bettor> winner = vector<Bettor>(0);
+	vector<Bet> bets;
+	vector<int> winner_numbers;
+	vector<Bettor> winners;
 
 public:
 	Edition();
@@ -19,7 +19,7 @@ public:
 
 	void ExecuteDrawPhase();
 
-	void ExecuteCoutingPhase();
+	bool ExecuteCoutingPhase();
 
 	void ExecuteAwardPhase();
 
