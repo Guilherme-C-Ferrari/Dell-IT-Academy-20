@@ -74,22 +74,32 @@ int Bookmaker::TestException(string arg_string) {
     string testString = arg_string;
 
     try {
-        testInt = atoi(testString.c_str());
-        if (testInt <= 0) {
-            throw (testString);
-        }
-    }
-    catch (string testString) {
-        cout << "\nA opção " << testString << " é inválida.\n";
+       testInt = atoi(testString.c_str());
+       if (testInt <= 0) {
+           throw (testString);
+       }
+    } catch (string testString) {
+       cout << "\nA opção " << testString << " é inválida.\n";
     }
     return testInt;
 }
 
 void Bookmaker::StartNewEdition() {
+    bool testBool = false;
+    int index = 0;
     int indexEdition = editions.size();
     editions.resize(indexEdition + 1);
 
     StartBetPhaseOnEdition(indexEdition);
+
+    while (testBool == false && index < 26) {
+        StartDrawPhaseOnEdtion(indexEdition);
+        StartCoutingPhaseOnEdition(indexEdition);
+
+        index++;
+    }
+   
+    StartAwardPhaseOnEdition(indexEdition);
 }
 
 void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
@@ -98,6 +108,7 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
     string testString = "";
     string name = "";
     string cpf = "";
+    bool testBool = false;
 
     do {
         testInt = 0;
@@ -126,13 +137,31 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
                 testInt = TestException(testString);
                 if (testInt == 1) {
                     int n[5] = { 0 };
+                    for (int i = 0; i < 5; i++) {
+                        testBool = false;
+                        while (testBool == false) {
+                            cout << "\nDigite um valor de 1 a 50, lembresse de digitar um valor diferentes dos anteriores\n\n";
+                            cin >> testString;
+                            testInt = TestException(testString);
 
+                            if (find(begin(n), end(n), testInt) == end(n) && testInt >= 1 && testInt <= 50) {
+                                testBool = true;
+                            } else {
+                                testBool = false;
+                            }
+
+                            if (testBool == true) {
+                                n[i] = testInt;
+                            } else {
+                                cout << "\nValor inválido.\n";
+                            }
+                        }
+                    }
+                    testInt = 1;
                     editions[indexEdition].RegisterNewBet(name, cpf, 1, n);
-                }
-                else if (testInt == 2) {
+                } else if (testInt == 2) {
                     editions[indexEdition].RegisterNewBet(name, cpf, 2, NULL);
-                }
-                else {
+                } else {
                     cout << "\nEscolha uma opção válida.\n";
                 }
             } while (testInt != 1 && testInt != 2);
@@ -155,15 +184,15 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
 }
 
 void Bookmaker::StartDrawPhaseOnEdtion(int IndexEdition) {
-
+    editions[IndexEdition].ExecuteDrawPhase();
 }
 
 void Bookmaker::StartCoutingPhaseOnEdition(int IndexEdition) {
-
+    editions[IndexEdition].ExecuteCoutingPhase();
 }
 
 void Bookmaker::StartAwardPhaseOnEdition(int IndexEdition) {
-
+    editions[IndexEdition].ExecuteAwardPhase();
 }
 
 void Bookmaker::CheckPastEditions() {
