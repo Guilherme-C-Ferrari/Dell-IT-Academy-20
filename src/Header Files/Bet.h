@@ -12,7 +12,6 @@ private:
 	Bettor bettor;
 
 public: 
-
 	Bet();
 
 	int GetCode();

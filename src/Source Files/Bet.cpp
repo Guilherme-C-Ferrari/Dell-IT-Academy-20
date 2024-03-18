@@ -25,17 +25,19 @@ void Bet::SetNumbersRandomly() {
 	int number;
 
 	for (int i = 0; i < 5; i++) {
+		testBool = false;
 		while (testBool == false) {
-			srand((unsigned)time(NULL));
 			number = rand() % 50 + 1;
 
-			for (int j = 0; j < sizeof(numbers); j++) {
-				if (numbers[j] != number) {
-					testBool = true;
-				}
-				else {
-					testBool = false;
-				}
+			int* testNumber = find(begin(numbers), end(numbers), number);
+			if (testNumber == end(numbers)) {
+				testBool = true;
+			} else {
+				testBool = false;
+			}
+
+			if (testBool == true) {
+				numbers[i] = number;
 			}
 		}
 	}
