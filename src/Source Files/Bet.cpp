@@ -29,8 +29,7 @@ void Bet::SetNumbersRandomly() {
 		while (testBool == false) {
 			number = rand() % 50 + 1;
 
-			int* testNumber = find(begin(numbers), end(numbers), number);
-			if (testNumber == end(numbers)) {
+			if (find(begin(numbers), end(numbers), number) == end(numbers)) {
 				testBool = true;
 			} else {
 				testBool = false;
