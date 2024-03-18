@@ -10,7 +10,6 @@ private:
 	string cpf;
 
 public:
-
 	Bettor();
 
 	string GetName();
@@ -20,5 +19,4 @@ public:
 	void SetCPF(string c);
 
 	void SaveBettorData(string n, string c);
-
 };
