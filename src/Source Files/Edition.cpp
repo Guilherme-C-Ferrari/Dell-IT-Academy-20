@@ -155,7 +155,7 @@ void Edition::ShowDataOffCoutingPhase() {
 	for (int i = 0; i < winners.size(); i++) {
 		tempBettor = winners[i].GetBettor();
 		tempArray = winners[i].GetNumbers();
-		cout << "\nAposta número: " << winners[i].GetCode();
+		cout << "\n\nAposta número: " << winners[i].GetCode();
 		cout << "\nApostador: " << tempBettor.GetName() << " - CPF: " << tempBettor.GetCPF();
 		cout << "\nNúmeros: ";
 		for (int j = 0; j < 5; j++) {
