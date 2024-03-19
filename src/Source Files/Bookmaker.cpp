@@ -91,14 +91,13 @@ void Bookmaker::StartNewEdition() {
     editions.resize(indexEdition + 1);
 
     StartBetPhaseOnEdition(indexEdition);
-
     while (testBool == false && index < 26) {
+        cout << "\n---------------------Fase de Sorteio----------------------\n";
         StartDrawPhaseOnEdtion(indexEdition);
-        StartCoutingPhaseOnEdition(indexEdition);
+        testBool = StartCoutingPhaseOnEdition(indexEdition);
 
         index++;
     }
-   
     StartAwardPhaseOnEdition(indexEdition);
 }
 
@@ -204,8 +203,8 @@ void Bookmaker::StartDrawPhaseOnEdtion(int IndexEdition) {
     editions[IndexEdition].ExecuteDrawPhase();
 }
 
-void Bookmaker::StartCoutingPhaseOnEdition(int IndexEdition) {
-    editions[IndexEdition].ExecuteCoutingPhase();
+bool Bookmaker::StartCoutingPhaseOnEdition(int IndexEdition) {
+    return editions[IndexEdition].ExecuteCoutingPhase();
 }
 
 void Bookmaker::StartAwardPhaseOnEdition(int IndexEdition) {
@@ -213,5 +212,7 @@ void Bookmaker::StartAwardPhaseOnEdition(int IndexEdition) {
 }
 
 void Bookmaker::CheckPastEditions() {
-
+    for (int i = 0; i < editions.size(); i++) {
+        editions[i].ShowEditionData();
+    }
 }

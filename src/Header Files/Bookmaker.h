@@ -33,7 +33,7 @@ public:
 	void StartDrawPhaseOnEdtion(int indexEdition);
 
 	// Método que inicia a fase de apuração.
-	void StartCoutingPhaseOnEdition(int indexEdition);
+	bool StartCoutingPhaseOnEdition(int indexEdition);
 
 	// Método que inicia a fase de premiação.
 	void StartAwardPhaseOnEdition(int indexEdition);
