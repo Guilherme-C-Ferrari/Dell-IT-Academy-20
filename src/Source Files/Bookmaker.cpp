@@ -25,6 +25,7 @@ void Bookmaker::Run() {
         cout << "3 - Encerrar programa\n\n> ";
         cin >> testString;
         option = TestException(testString);
+        system("cls");
 
         switch (option) {
         case 1:
@@ -42,6 +43,7 @@ void Bookmaker::Run() {
                 testInt = TestException(testString);
 
                 if (testInt == 1) {
+                    system("cls");
                     cout << "\nO programa será finalizado.\n";
                 }
                 else if (testInt == 2) {
@@ -60,6 +62,7 @@ void Bookmaker::Run() {
             cout << "\nPressione Enter para continuar...";
             cin.ignore();
             cin.get();
+            system("cls");
         }
     } while (option != 3);
 }
@@ -93,7 +96,7 @@ void Bookmaker::StartNewEdition() {
     StartBetPhaseOnEdition(indexEdition);
     while (testBool == false && index < 26) {
         cout << "\n---------------------Fase de Sorteio----------------------\n";
-        cout << "A fase de sorteio está sendo executada.\n";
+        cout << "\nA fase de sorteio está sendo executada.\n";
         StartDrawPhaseOnEdtion(indexEdition);
         testBool = StartCoutingPhaseOnEdition(indexEdition);
 
@@ -120,6 +123,7 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
         cout << "3 - Passar para a fase de sorteio\n\n> ";
         cin >> testString;
         option = TestException(testString);
+        system("cls");
 
         switch (option) {
         case 1:
@@ -196,6 +200,7 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
             cout << "\nPressione Enter para continuar...";
             cin.ignore();
             cin.get();
+            system("cls");
         }
     } while (option != 3);
 }
@@ -213,6 +218,7 @@ void Bookmaker::StartAwardPhaseOnEdition(int IndexEdition) {
 }
 
 void Bookmaker::CheckPastEditions() {
+    cout << "\n---------------------Detalhes das Edições----------------------\n";
     for (int i = 0; i < editions.size(); i++) {
         editions[i].ShowEditionData();
     }

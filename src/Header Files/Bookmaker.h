@@ -1,5 +1,7 @@
 #pragma once
 # include "Edition.h"
+# include <stdlib.h> 
+
 
 class Bookmaker {
 
