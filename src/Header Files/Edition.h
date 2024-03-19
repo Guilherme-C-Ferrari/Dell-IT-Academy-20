@@ -1,14 +1,21 @@
 #pragma once
 # include "Bet.h"
+# include <algorithm>
+
+struct BettedNumberInEdition {
+	int number = 0;
+	int quantity = 0;
+};
 
 class Edition {
 
 private:
 
 	int edition_number;
-	vector<Bet> bets;
 	vector<int> winner_numbers;
-	vector<Bettor> winners;
+	vector<Bet> bets;
+	vector<Bet> winners;
+	vector<BettedNumberInEdition> bettedNumbers;
 
 public:
 	Edition();
@@ -20,6 +27,10 @@ public:
 	void ExecuteDrawPhase();
 
 	bool ExecuteCoutingPhase();
+
+	void AddBettedNumberInEdition(int n);
+
+	void ShowDataOffCoutingPhase();
 
 	void ExecuteAwardPhase();
 

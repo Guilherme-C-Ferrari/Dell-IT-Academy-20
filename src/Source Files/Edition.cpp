@@ -2,9 +2,10 @@
 
 Edition::Edition() {
 	edition_number = 0;
-	bets.resize(0);
 	winner_numbers.resize(5);
+	bets.resize(0);
 	winners.resize(0);
+	bettedNumbers.resize(0);
 }
 
 void Edition::RegisterNewBet(string name, string cpf, int option, int n[5]) {
@@ -42,7 +43,7 @@ void Edition::ShowBets() {
 
 void Edition::ExecuteDrawPhase() {
 	bool testBool = false;
-	int number;
+	int number = 0;
 
 	if (winner_numbers[0] == 0) {
 		for (int i = 0; i < 5; i++) {
@@ -88,6 +89,7 @@ bool Edition::ExecuteCoutingPhase() {
 	for (int i = 0; i < bets.size(); i++) {
 		testWinner = 0;
 		tempArray = bets[i].GetNumbers();
+		AddBettedNumberInEdition(tempArray[i]);
 		for (int j = 0; j < winner_numbers.size(); j++) {
 			if (tempArray[i] == winner_numbers[j]) {
 				testWinner++;
@@ -95,10 +97,11 @@ bool Edition::ExecuteCoutingPhase() {
 		}
 
 		if (testWinner == 5) {
-			winners.push_back(bets[i].GetBettor());
+			winners.push_back(bets[i]);
 		}
 	}
 
+	ShowDataOffCoutingPhase();
 	if (winners.size() > 0) {
 		return true;
 	}
@@ -106,10 +109,108 @@ bool Edition::ExecuteCoutingPhase() {
 	return false;
 }
 
-void Edition::ExecuteAwardPhase() {
+void Edition::AddBettedNumberInEdition(int n) {
+	bool testBool = false;
+	int index = 0;
 
+	while (index < bettedNumbers.size() && testBool == false) {
+		if (n == bettedNumbers[index].number) {
+			bettedNumbers[index].quantity = bettedNumbers[index].quantity + 1;
+		}
+	}
+
+	if (testBool == false) {
+		bettedNumbers.resize(bettedNumbers.size() + 1);
+		index = bettedNumbers.size() - 1;
+		bettedNumbers[index].number = n;
+		bettedNumbers[index].quantity = 1;
+	}
+}
+
+void Edition::ShowDataOffCoutingPhase() {
+	int* tempArray;
+	Bettor tempBettor;
+	vector<BettedNumberInEdition> reorderedVector;
+
+	cout << "\n---------------------Fase de Apuração----------------------\n";
+	cout << "\nNúmeros vencedores: ";
+	for (int i = 0; i < winner_numbers.size(); i++) {
+		cout << winner_numbers[i] << " ";
+	}
+	cout << "\n\nRodadas realizadas: " << winner_numbers.size() - 4;
+	cout << "\n\nQuantidade de apostas vencedoras: " << winners.size();
+	cout << "\n\nLista de apostas vencedoras: ";
+	for (int i = 0; i < winners.size(); i++) {
+		tempBettor = winners[i].GetBettor();
+		tempArray = winners[i].GetNumbers();
+		cout << "\nAposta número: " << winners[i].GetCode();
+		cout << "\nApostador: " << tempBettor.GetName() << " - CPF: " << tempBettor.GetCPF();
+		cout << "\nNúmeros: ";
+		for (int j = 0; j < 5; j++) {
+			cout << tempArray[j] << " ";
+		}
+	}
+	cout << "\n\nLista de números apostados:\n";
+	cout << "\nNúmero Apostado - Quantidade de apostas\n";
+
+	sort(bettedNumbers.begin(), bettedNumbers.end(), [](const BettedNumberInEdition& lhs, const BettedNumberInEdition& rhs) {
+		return lhs.quantity < rhs.quantity;
+	});
+
+	for (int i = 0; i < bettedNumbers.size(); i++) {
+		cout << bettedNumbers[i].number << " - " << bettedNumbers[i].quantity << endl;
+	}
+}
+
+void Edition::ExecuteAwardPhase() {
+	Bettor tempBettor;
+
+	if (winners.size() > 0) {
+		cout << "\n---------------------Fase de Premiação----------------------\n";
+		cout << "\nParabéns aos ganhadores: \n\n";
+		for (int i = 0; i < winners.size(); i++) {
+			tempBettor = winners[i].GetBettor();
+			cout << tempBettor.GetName() << endl;
+		}
+
+		if (winners.size() == 1) {
+			cout << "\nO premio de 1.000.000 de reais foi dado ao vencedor.";
+		} else {
+			cout << "\nO premio de 1.000.000 de reais foi dividido entre o(s) " << winners.size() << " vencedores.";
+			cout << "\nPremio divido: " << 1000000/ winners.size();
+		}
+	} else {
+		cout << "\nNão houveram vencedores.";
+	}
 }
 
 void Edition::ShowEditionData() {
+	int* tempArray;
+	Bettor tempBettor;
+	vector<BettedNumberInEdition> reorderedVector;
 
+	cout << "\nNúmero da edição: " << edition_number;
+	cout << "\nNúmeros vencedores: ";
+	for (int i = 0; i < winner_numbers.size(); i++) {
+		cout << winner_numbers[i] << " ";
+	}
+	cout << "\n\nRodadas realizadas: " << winner_numbers.size() - 4;
+	cout << "\n\nQuantidade de apostas vencedoras: " << winners.size();
+	cout << "\n\nLista de apostas vencedoras: ";
+	for (int i = 0; i < winners.size(); i++) {
+		tempBettor = winners[i].GetBettor();
+		tempArray = winners[i].GetNumbers();
+		cout << "\nAposta número: " << winners[i].GetCode();
+		cout << "\nApostador: " << tempBettor.GetName() << " - CPF: " << tempBettor.GetCPF();
+		cout << "\nNúmeros: ";
+		for (int j = 0; j < 5; j++) {
+			cout << tempArray[j] << " ";
+		}
+	}
+	cout << "\n\nLista de números apostados:\n";
+	cout << "\nNúmero Apostado - Quantidade de apostas\n";
+
+	for (int i = 0; i < bettedNumbers.size(); i++) {
+		cout << bettedNumbers[i].number << " - " << bettedNumbers[i].quantity << endl;
+	}
 }
