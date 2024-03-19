@@ -93,6 +93,7 @@ void Bookmaker::StartNewEdition() {
     int indexEdition = editions.size();
     editions.resize(indexEdition + 1);
 
+    editions[indexEdition].SetEditionNumber(editions.size());
     StartBetPhaseOnEdition(indexEdition);
     while (testBool == false && index < 26) {
         cout << "\n---------------------Fase de Sorteio----------------------\n";
