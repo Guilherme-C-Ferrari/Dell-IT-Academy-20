@@ -96,12 +96,13 @@ void Bookmaker::StartNewEdition() {
     editions[indexEdition].SetEditionNumber(editions.size());
     StartBetPhaseOnEdition(indexEdition);
     while (testBool == false && index < 26) {
-        cout << "\n---------------------Fase de Sorteio----------------------\n";
+        cout << "\n-----------------------Fase de Sorteio-----------------------\n";
         cout << "\nA fase de sorteio está sendo executada.\n";
         StartDrawPhaseOnEdtion(indexEdition);
+        Sleep(1000);
         testBool = StartCoutingPhaseOnEdition(indexEdition);
-
         index++;
+        Sleep(1000);
     }
     StartAwardPhaseOnEdition(indexEdition);
 }
@@ -109,9 +110,9 @@ void Bookmaker::StartNewEdition() {
 void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
     int option = 0;
     int testInt = 0;
-    string testString = "";
     string name = "";
     string cpf = "";
+    string testString = "";
     bool testBool = false;
 
     do {
@@ -225,7 +226,12 @@ void Bookmaker::StartAwardPhaseOnEdition(int IndexEdition) {
 
 void Bookmaker::CheckPastEditions() {
     cout << "\n---------------------Detalhes das Edições----------------------\n";
-    for (int i = 0; i < editions.size(); i++) {
-        editions[i].ShowEditionData();
+    if (editions.size() == 0) {
+        cout << "\nNenhuma edição passada registrada.\n";
+    }
+    else {
+        for (int i = 0; i < editions.size(); i++) {
+            editions[i].ShowEditionData();
+        }
     }
 }
