@@ -144,7 +144,7 @@ void Edition::ShowDataOffCoutingPhase() {
 	Bettor tempBettor;
 	vector<BettedNumberInEdition> reorderedVector;
 
-	cout << "\n---------------------Fase de Apuração----------------------\n";
+	cout << "\n----------------------Fase de Apuração-----------------------\n";
 	cout << "\nNúmeros vencedores: ";
 	for (int i = 0; i < winner_numbers.size(); i++) {
 		cout << winner_numbers[i] << " ";
@@ -152,14 +152,19 @@ void Edition::ShowDataOffCoutingPhase() {
 	cout << "\n\nRodadas realizadas: " << winner_numbers.size() - 4;
 	cout << "\n\nQuantidade de apostas vencedoras: " << winners.size();
 	cout << "\n\nLista de apostas vencedoras: ";
-	for (int i = 0; i < winners.size(); i++) {
-		tempBettor = winners[i].GetBettor();
-		tempArray = winners[i].GetNumbers();
-		cout << "\n\nAposta número: " << winners[i].GetCode();
-		cout << "\nApostador: " << tempBettor.GetName() << " - CPF: " << tempBettor.GetCPF();
-		cout << "\nNúmeros: ";
-		for (int j = 0; j < 5; j++) {
-			cout << tempArray[j] << " ";
+	if (winners.size() == 0) {
+		cout << "\n\nNenhuma aposta vencedora até o momento.";
+	}
+	else {
+		for (int i = 0; i < winners.size(); i++) {
+			tempBettor = winners[i].GetBettor();
+			tempArray = winners[i].GetNumbers();
+			cout << "\n\nAposta número: " << winners[i].GetCode();
+			cout << "\nApostador: " << tempBettor.GetName() << " - CPF: " << tempBettor.GetCPF();
+			cout << "\nNúmeros: ";
+			for (int j = 0; j < 5; j++) {
+				cout << tempArray[j] << " ";
+			}
 		}
 	}
 	cout << "\n\nLista de números apostados:\n";
@@ -177,8 +182,8 @@ void Edition::ShowDataOffCoutingPhase() {
 void Edition::ExecuteAwardPhase() {
 	Bettor tempBettor;
 
+	cout << "\n----------------------Fase de Premiação---------------------\n";
 	if (winners.size() > 0) {
-		cout << "\n---------------------Fase de Premiação----------------------\n";
 		cout << "\nParabéns aos ganhadores: \n\n";
 		for (int i = 0; i < winners.size(); i++) {
 			tempBettor = winners[i].GetBettor();
@@ -212,7 +217,7 @@ void Edition::ShowEditionData() {
 
 	cout << "\n\nLista de apostas vencedoras: ";
 	if (winners.size() == 0) {
-		cout << "\n\nNenhuma aposta vencedora até o momento.";
+		cout << "\n\nNenhuma aposta vencedora.";
 	}
 	else {
 		for (int i = 0; i < winners.size(); i++) {
