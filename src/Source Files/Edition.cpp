@@ -8,6 +8,10 @@ Edition::Edition() {
 	bettedNumbers.resize(0);
 }
 
+void Edition::SetEditionNumber(int e) {
+	edition_number = e;
+}
+
 void Edition::RegisterNewBet(string name, string cpf, int option, int n[5]) {
 	int indexBet = bets.size();
 	bets.resize(indexBet + 1);

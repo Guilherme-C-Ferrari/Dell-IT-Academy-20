@@ -20,6 +20,8 @@ private:
 public:
 	Edition();
 
+	void SetEditionNumber(int e);
+
 	void RegisterNewBet(string name, string cpf, int option, int n[5]);
 
 	void ShowBets();
