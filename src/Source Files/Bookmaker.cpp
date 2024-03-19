@@ -1,7 +1,7 @@
 #include "../Header Files/Bookmaker.h"
 
 Bookmaker::Bookmaker() {
-    editions = vector<Edition>(0);
+    editions.resize(0);
 }
 
 void Bookmaker::Start() {
@@ -93,6 +93,7 @@ void Bookmaker::StartNewEdition() {
     StartBetPhaseOnEdition(indexEdition);
     while (testBool == false && index < 26) {
         cout << "\n---------------------Fase de Sorteio----------------------\n";
+        cout << "A fase de sorteio está sendo executada.\n";
         StartDrawPhaseOnEdtion(indexEdition);
         testBool = StartCoutingPhaseOnEdition(indexEdition);
 
