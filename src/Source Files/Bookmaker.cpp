@@ -100,12 +100,10 @@ void Bookmaker::StartNewEdition() {
         cout << "\n-----------------------Fase de Sorteio-----------------------\n";
         cout << "\nA fase de sorteio está sendo executada.\n";
         StartDrawPhaseOnEdtion(indexEdition);
-        Sleep(1000);
-
+        Sleep(500);
         testBool = StartCoutingPhaseOnEdition(indexEdition);
-        Sleep(1000);
-
         roundsIndex++;
+        Sleep(1700);
     }
     StartAwardPhaseOnEdition(indexEdition);
 }
