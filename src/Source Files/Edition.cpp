@@ -15,7 +15,6 @@ void Edition::SetEditionNumber(int e) {
 void Edition::RegisterNewBet(string name, string cpf, int option, int n[5]) {
 	int indexBet = bets.size();
 	bets.resize(indexBet + 1);
-
 	bets[indexBet].SetCode(1000 + indexBet);
 	if (option == 1) {
 		bets[indexBet].SetNumbers(n);
@@ -170,13 +169,12 @@ void Edition::ShowDataOffCoutingPhase() {
 			}
 		}
 	}
+
 	cout << "\n\nLista de números apostados:\n";
 	cout << "Número Apostado - Quantidade de apostas\n";
-
 	sort(bettedNumbers.begin(), bettedNumbers.end(), [](const BettedNumberInEdition& lhs, const BettedNumberInEdition& rhs) {
 		return lhs.quantity > rhs.quantity;
 	});
-
 	for (int i = 0; i < bettedNumbers.size(); i++) {
 		cout << bettedNumbers[i].number << " - " << bettedNumbers[i].quantity << endl;
 	}
