@@ -20,9 +20,9 @@ void Bookmaker::Run() {
 
         cout << "\n---------------------Menu----------------------\n\n";
         cout << "Diga a opção que deseja:\n\n";
-        cout << "1 - Iniciar Edição\n";
-        cout << "2 - Checar Edições Anteriores\n";
-        cout << "3 - Encerrar programa\n\n> ";
+        cout << "1 - Iniciar Edição.\n";
+        cout << "2 - Checar Edições Anteriores.\n";
+        cout << "3 - Encerrar programa.\n\n> ";
         cin >> testString;
         option = TestException(testString);
         system("cls");
@@ -95,7 +95,7 @@ void Bookmaker::StartNewEdition() {
 
     editions[indexEdition].SetEditionNumber(editions.size());
     StartBetPhaseOnEdition(indexEdition);
-    while (testBool == false && index < 26) {
+    while (testBool == false && index < 25) {
         cout << "\n-----------------------Fase de Sorteio-----------------------\n";
         cout << "\nA fase de sorteio está sendo executada.\n";
         StartDrawPhaseOnEdtion(indexEdition);
@@ -122,9 +122,9 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
 
         cout << "\n---------------------Fase de Apostas----------------------\n\n";
         cout << "Diga a opção que deseja:\n\n";
-        cout << "1 - Registrar uma aposta\n";
-        cout << "2 - Checar a Lista de Apostas\n";
-        cout << "3 - Passar para a fase de sorteio\n\n> ";
+        cout << "1 - Registrar uma aposta.\n";
+        cout << "2 - Checar a Lista de Apostas.\n";
+        cout << "3 - Passar para a fase de sorteio.\n\n> ";
         cin >> testString;
         option = TestException(testString);
         system("cls");
@@ -136,17 +136,17 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
             cin.ignore();
             getline(cin, name);
             do {
-                cout << "\nQual o cpf do apostador? Digite apenas os digitos\n\n";
+                cout << "\nQual o cpf do apostador? Digite apenas os digitos.\n\n";
                 cin >> cpf;
                 if ((cpf.begin(), cpf.end(), isdigit) && size(cpf) != 11) {
-                    cout << "\nDigite um valor válido\n";
+                    cout << "\nDigite um valor válido.\n";
                 }
             } while ((cpf.begin(), cpf.end(), isdigit) && size(cpf) != 11);
 
             do {
                 cout << "\nQual forma de registro de aposta deseja fazer?\n";
-                cout << "1 - Escolha Manual\n";
-                cout << "2 - Surpresinha (Escolha Aleatória)\n\n> ";
+                cout << "1 - Escolha Manual.\n";
+                cout << "2 - Surpresinha. (Escolha Aleatória)\n\n> ";
                 cin >> testString;
                 testInt = TestException(testString);
                 if (testInt == 1) {
@@ -154,7 +154,7 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
                     for (int i = 0; i < 5; i++) {
                         testBool = false;
                         while (testBool == false) {
-                            cout << "\nDigite um valor de 1 a 50, lembresse de digitar um valor diferentes dos anteriores\n\n";
+                            cout << "\nDigite um valor de 1 a 50, lembresse de digitar um valor diferentes dos anteriores.\n\n";
                             cin >> testString;
                             testInt = TestException(testString);
 
@@ -186,8 +186,8 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
         case 3:
             do {
                 cout << "\nVocê tem certeza que deseja passar para a fase de sorteio?\n";
-                cout << "1 - Sim\n";
-                cout << "2 - Não\n\n> ";
+                cout << "1 - Sim.\n";
+                cout << "2 - Não.\n\n> ";
                 cin >> testString;
                 testInt = TestException(testString);
 
