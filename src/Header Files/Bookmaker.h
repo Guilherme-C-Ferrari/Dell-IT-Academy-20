@@ -1,5 +1,6 @@
 #pragma once
 # include "Edition.h"
+# include <string>
 # include <stdlib.h>
 # include <windows.h>
 
