@@ -172,7 +172,7 @@ void Edition::ShowDataOffCoutingPhase() {
 
 	cout << "\n\nLista de números apostados:\n";
 	cout << "Número Apostado - Quantidade de apostas\n";
-	sort(bettedNumbers.begin(), bettedNumbers.end(), [](const BettedNumberInEdition& lhs, const BettedNumberInEdition& rhs) {
+	sort(bettedNumbers.begin(), bettedNumbers.end(), [](const BettedNumberInEdition lhs, const BettedNumberInEdition rhs) {
 		return lhs.quantity > rhs.quantity;
 	});
 	for (int i = 0; i < bettedNumbers.size(); i++) {
