@@ -1,7 +1,7 @@
 #pragma once
 # include "Bettor.h"
-# include <vector>
 # include <cstdlib>
+# include <vector>
 
 class Bet {
 
