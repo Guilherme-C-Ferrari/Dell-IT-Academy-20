@@ -192,6 +192,11 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
                 cin >> testString;
                 testInt = TestException(testString);
 
+                if (editions[indexEdition].CheckExistenceOfBets() == false) {
+                    cout << "\nÉ necessário pelo menos uma aposta registrada para passar para fase de sorteio.\n";
+                    testInt = 2;
+                }
+
                 if (testInt == 1) {
                     cout << "\nO programa passará para a fase de sorteio.\n";
                 }

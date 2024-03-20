@@ -44,6 +44,13 @@ void Edition::ShowBets() {
 	}
 }
 
+bool Edition::CheckExistenceOfBets() {
+	if (bets.size() > 0) {
+		return true;
+	}
+	return false;
+}
+
 void Edition::ExecuteDrawPhase() {
 	bool testBool = false;
 	int number = 0;

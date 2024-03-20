@@ -26,6 +26,8 @@ public:
 
 	void ShowBets();
 
+	bool CheckExistenceOfBets();
+
 	void ExecuteDrawPhase();
 
 	bool ExecuteCoutingPhase();
