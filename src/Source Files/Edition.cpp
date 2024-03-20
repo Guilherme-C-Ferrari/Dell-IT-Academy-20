@@ -156,6 +156,9 @@ void Edition::ShowDataOffCoutingPhase() {
 		cout << "\n\nNenhuma aposta vencedora até o momento.";
 	}
 	else {
+		sort(winners.begin(), winners.end(), [](Bet lhs, Bet rhs) {
+			return lhs.GetBettor().GetName() < rhs.GetBettor().GetName();
+		});
 		for (int i = 0; i < winners.size(); i++) {
 			tempBettor = winners[i].GetBettor();
 			tempArray = winners[i].GetNumbers();
