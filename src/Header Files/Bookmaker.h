@@ -12,7 +12,7 @@ private:
 	vector<Edition> editions;
 
 public:
-
+	// Construtor da classe Bookmaker.
 	Bookmaker();
 
 	// Método que inicializa o programa.
