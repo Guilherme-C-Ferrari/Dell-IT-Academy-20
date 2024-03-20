@@ -1,21 +1,26 @@
 #include "../Header Files/Bookmaker.h"
 
+// Arquivo de implementação da Classe Bookmaker.
+// Aqui ocorre a implementação dos métodos de mesmo nome declarados e explicados no cabeçalho da classe Bookmaker.
+
 Bookmaker::Bookmaker() {
-    editions.resize(0);
+    editions.resize(0); // Define o tamanho do vetor como 0.
 }
 
+// No método abaixo ocorre a inicialização que define cores e linguagem ao inicializar o programa, além de imprimir uma mensagem inicial.
 void Bookmaker::Start() {
-    system("Color 09");
-	setlocale(LC_ALL, "portuguese");
-    srand((unsigned)time(NULL));
+    system("Color 09"); // Define a cor das letras e do fundo do console.
+	setlocale(LC_ALL, "portuguese"); // Define a linguagem do console.
+    srand((unsigned)time(NULL)); // Comando para realização da geração de números pseudo-aleatórios.
     cout << "O programa está sendo iniciado.\n";
     cout << "Bem-vindo ao sistema de controle de apostas da Dell!\n";
 }
 
+// O método abaixo roda o menu do programa.
 void Bookmaker::Run() {
-    int option = 0;
-    int testInt = 0;
-    string testString = "";
+    int option = 0; // Variável que recebe as opções do menu a ser escolhidas.
+    int testInt = 0; // Varíavel de apoio Int para teste de Input.
+    string testString = ""; // Varíavel de apoio String para teste de Input.
 
     do {
         testInt = 0;
@@ -62,20 +67,22 @@ void Bookmaker::Run() {
         }
         if (option != 3) {
             cout << endl;
-            system("pause");
-            system("cls");
+            system("pause"); // Cria uma pausa no console até que o operador aperte realize um input.
+            system("cls"); // Limpa o console.
         }
     } while (option != 3);
 }
 
+// O método abaixo finaliza a execução do programa.
 void Bookmaker::Finish() {
     cout << "\nO programa foi finalizado.\n";
 	exit(0);
 }
 
+// O método abaixo testa exceção de input do tipo String onde deveria ser realizada o Input do tipo Int.
 int Bookmaker::TestException(string arg_string) {
-    int testInt = 0;
-    string testString = arg_string;
+    int testInt = 0; // Varíavel de apoio Int para teste de Input.
+    string testString = arg_string; // Varíavel de apoio String para teste de Input.
 
     try {
        testInt = atoi(testString.c_str());
@@ -88,11 +95,16 @@ int Bookmaker::TestException(string arg_string) {
     return testInt;
 }
 
+/*
+   O método abaixo cria uma nova edição e realiza a ordenação entre as fases da edição.
+   No método é utilizado da função Sleep() para deixar a fase de apuração mais lenta, para no console ela fique
+   mais legível e gere a sensação de suspense do sorteio dos números estar acontecendo na frente do operador.
+*/ 
 void Bookmaker::StartNewEdition() {
-    bool testBool = false;
-    int roundsIndex = 0;
-    int indexEdition = editions.size();
-    editions.resize(indexEdition + 1);
+    bool testBool = false; // Variável que testa o final da fase de apuração.
+    int roundsIndex = 0; // Contador de rodadas realizadas.
+    int indexEdition = editions.size(); // Índice de posição da edição no vetor.
+    editions.resize(indexEdition + 1); // Libera espaço para uma nova edição no vetor.
 
     editions[indexEdition].SetEditionNumber(editions.size());
     StartBetPhaseOnEdition(indexEdition);
@@ -108,13 +120,14 @@ void Bookmaker::StartNewEdition() {
     StartAwardPhaseOnEdition(indexEdition);
 }
 
+// O método abaixo serve para iniciar a fase de apostas, lendo os inputs do operador para registrar novas apostas e checar antigas.
 void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
-    int option = 0;
-    int testInt = 0;
-    string name = "";
-    string cpf = "";
-    string testString = "";
-    bool testBool = false;
+    int option = 0; // Variável que recebe as opções do menu a ser escolhidas.
+    int testInt = 0; // Varíavel de apoio Int para teste de Input. 
+    string name = ""; // Varíavel que salva o nome do apostador.
+    string cpf = ""; // Varíavel que salva o CPF do apostador.
+    string testString = ""; // Varíavel de apoio String para teste de Input.
+    bool testBool = false; // Varíavel de apoio Bool para teste de Input.
 
     do {
         testInt = 0;
@@ -218,22 +231,26 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
     } while (option != 3);
 }
 
+// O método abaixo inicializa a fase de sorteio chamando o método da edição.
 void Bookmaker::StartDrawPhaseOnEdtion(int IndexEdition) {
     editions[IndexEdition].ExecuteDrawPhase();
 }
 
+// O método abaixo inicializa a fase de apuração chamando o método da edição.
 bool Bookmaker::StartCoutingPhaseOnEdition(int IndexEdition) {
     return editions[IndexEdition].ExecuteCoutingPhase();
 }
 
+// O método abaixo inicializa a fase de premiação chamando o método da edição.
 void Bookmaker::StartAwardPhaseOnEdition(int IndexEdition) {
     editions[IndexEdition].ExecuteAwardPhase();
 }
 
+// O método abaixo mostra as edições anteriores registradas.
 void Bookmaker::CheckPastEditions() {
     cout << "\n---------------------Detalhes das Edições----------------------\n";
     if (editions.size() == 0) {
-        cout << "\nNenhuma edição passada registrada.\n";
+        cout << "\nNenhuma edição passada registrada.\n"; // Mensagem caso não haja nenhuma edição anterior.
     }
     else {
         for (int i = 0; i < editions.size(); i++) {
