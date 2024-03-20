@@ -5,9 +5,11 @@ Bookmaker::Bookmaker() {
 }
 
 void Bookmaker::Start() {
+    system("Color 09");
 	setlocale(LC_ALL, "portuguese");
     srand((unsigned)time(NULL));
     cout << "O programa está sendo iniciado.\n";
+    cout << "Bem-vindo ao sistema de controle de apostas da Dell!\n";
 }
 
 void Bookmaker::Run() {
@@ -59,9 +61,8 @@ void Bookmaker::Run() {
             cout << "\nEscolha uma opção válida.\n";
         }
         if (option != 3) {
-            cout << "\nPressione Enter para continuar...";
-            cin.ignore();
-            cin.get();
+            cout << endl;
+            system("pause");
             system("cls");
         }
     } while (option != 3);
@@ -89,13 +90,13 @@ int Bookmaker::TestException(string arg_string) {
 
 void Bookmaker::StartNewEdition() {
     bool testBool = false;
-    int index = 0;
+    int roundsIndex = 0;
     int indexEdition = editions.size();
     editions.resize(indexEdition + 1);
 
     editions[indexEdition].SetEditionNumber(editions.size());
     StartBetPhaseOnEdition(indexEdition);
-    while (testBool == false && index < 25) {
+    while (testBool == false && roundsIndex < 25) {
         cout << "\n-----------------------Fase de Sorteio-----------------------\n";
         cout << "\nA fase de sorteio está sendo executada.\n";
         StartDrawPhaseOnEdtion(indexEdition);
@@ -104,7 +105,7 @@ void Bookmaker::StartNewEdition() {
         testBool = StartCoutingPhaseOnEdition(indexEdition);
         Sleep(1000);
 
-        index++;
+        roundsIndex++;
     }
     StartAwardPhaseOnEdition(indexEdition);
 }
@@ -136,7 +137,7 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
             cin.ignore();
             getline(cin, name);
             do {
-                cout << "\nQual o cpf do apostador? Digite apenas os digitos.\n\n";
+                cout << "\nQual o CPF do apostador? Digite apenas os digitos.\n\n";
                 cin >> cpf;
                 if ((cpf.begin(), cpf.end(), isdigit) && size(cpf) != 11) {
                     cout << "\nDigite um valor válido.\n";
@@ -207,9 +208,8 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
             cout << "\nEscolha uma opção válida.\n";
         }
         if (option != 3) {
-            cout << "\nPressione Enter para continuar...";
-            cin.ignore();
-            cin.get();
+            cout << endl;
+            system("pause");
             system("cls");
         }
     } while (option != 3);
