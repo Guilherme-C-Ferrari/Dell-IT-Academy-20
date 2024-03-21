@@ -9,7 +9,7 @@ g++ -std=c++17 -c "./src/Source Files/edition.cpp"
 @echo off
 g++ -std=c++17 -c "./src/Source Files/main.cpp"
 @echo off
-g++ -o prog main.o bet.o bettor.o bookmaker.o edition.o 
+g++ -o App main.o bet.o bettor.o bookmaker.o edition.o 
 @echo off
 del main.o
 @echo off
