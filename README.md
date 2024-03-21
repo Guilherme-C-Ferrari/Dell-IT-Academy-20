@@ -14,7 +14,7 @@ para execução do projeto em G++ no console.
 ## Organização do Projeto
 
 O projeto possui em sua raiz os arquivos de projeto, o arquivo "compile.bat", os arquivos ".gitattributes" e ".gitignore" e 
-o "README.MD" que está sendo lido nesse momento. Além disso, ele possui uma pasta "src" onde se encontra o código fonte. Essa
+o "README.MD" que está sendo lido nesse momento. Além disso, ele possui uma pasta "src" onde se encontra o código-fonte. Essa
 pasta está dividida em "Header Files", onde se encontram os arquivos de cabeçalho, e "Source Files", onde se encontram os
 arquivos de implementação do tipo ".ccp".
 
