@@ -1,8 +1,5 @@
 #pragma once
 # include "Edition.h"
-# include <stdlib.h>
-# include <string>
-# include <windows.h>
 
 // Arquivo de Cabeçalho da Classe Bookmaker.
 // A Classe Bookmaker abaixo representa o sistema de apostas, a parte onde as edições são feitas e organizadas.

@@ -1,5 +1,11 @@
 #pragma once
 # include <iostream>
+# include <algorithm>
+# include <cstdlib>
+# include <stdlib.h>
+# include <string>
+# include <vector>
+# include <windows.h>
 using namespace std;
 
 // Arquivo de Cabeçalho da Classe Bettor.

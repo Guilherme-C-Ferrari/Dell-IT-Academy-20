@@ -1,6 +1,5 @@
 #pragma once
 # include "Bet.h"
-# include <algorithm>
 
 // Estrutura que representa os números que foram apostados na edição.
 struct BettedNumberInEdition {

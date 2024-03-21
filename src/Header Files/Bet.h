@@ -1,7 +1,5 @@
 #pragma once
 # include "Bettor.h"
-# include <cstdlib>
-# include <vector>
 
 // Arquivo de Cabeçalho da Classe Bet.
 // A Classe Bet abaixo representa as cartilhas de apostas feitas no sistema.
