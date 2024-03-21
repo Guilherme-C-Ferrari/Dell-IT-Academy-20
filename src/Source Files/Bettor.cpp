@@ -1,4 +1,4 @@
-# include "../Header Files/Bettor.h";
+# include "../Header Files/Bettor.h"
 
 // Arquivo de implementação da Classe Bettor.
 // Aqui ocorre a implementação dos métodos de mesmo nome declarados e explicados no cabeçalho da classe Bettor.
