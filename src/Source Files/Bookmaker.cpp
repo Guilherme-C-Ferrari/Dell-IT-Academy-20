@@ -176,7 +176,7 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
                     for (int i = 0; i < 5; i++) {
                         testBool = false;
                         while (testBool == false) {
-                            cout << "\nDigite um valor de 1 a 50, lembresse de digitar um valor diferentes dos anteriores.\n\n";
+                            cout << "\nDigite um valor de 1 a 50, lembresse de digitar um valor diferente dos anteriores.\n\n";
                             cin >> testString;
                             testInt = TestException(testString);
 
