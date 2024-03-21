@@ -4,6 +4,7 @@
 # include <cstdlib>
 # include <stdlib.h>
 # include <string>
+# include <time.h>
 # include <vector>
 # include <windows.h>
 using namespace std;
