@@ -148,12 +148,22 @@ void Bookmaker::StartBetPhaseOnEdition(int indexEdition) {
             cin.ignore();
             getline(cin, name);
             do {
+                testBool = false;
                 cout << "\nQual o CPF do apostador? Digite apenas os digitos.\n\n";
                 cin >> cpf;
-                if ((cpf.begin(), cpf.end(), isdigit) && size(cpf) != 11) {
+
+                for (int i = 0; i < cpf.size(); i++) {
+                    if (isdigit(cpf[i])) {
+                        testBool = true;
+                    } else {
+                        testBool = false;
+                    }
+                }
+
+                if (testBool == false || size(cpf) != 11) {
                     cout << "\nDigite um valor válido.\n";
                 }
-            } while ((cpf.begin(), cpf.end(), isdigit) && size(cpf) != 11);
+            } while (testBool == false || size(cpf) != 11);
 
             do {
                 cout << "\nQual forma de registro de aposta deseja fazer?\n";
