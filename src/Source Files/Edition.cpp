@@ -226,7 +226,7 @@ void Edition::ExecuteAwardPhase() {
 		if (winners.size() == 1) {
 			cout << "\nO premio de 1.000.000 de reais foi dado ao vencedor.\n";
 		} else {
-			cout << "\nO premio de 1.000.000 de reais foi dividido entre o(s) " << winners.size() << " vencedores.";
+			cout << "\nO prêmio de 1.000.000 de reais foi dividido entre o(s) " << winners.size() << " vencedores.";
 			cout << "\nPremio divido: " << 1000000/ winners.size() << "\n";
 		}
 	} else {
